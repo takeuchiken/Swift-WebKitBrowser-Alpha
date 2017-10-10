@@ -6,7 +6,6 @@
 //  Copyright © 2017年 竹内健. All rights reserved.
 //
 
-//import Foundation
 import WebKit
 
 class WebViewController: WKWebView, WKUIDelegate, WKNavigationDelegate {
