@@ -14,6 +14,8 @@ class ViewController: UIViewController {
 	
 	override func loadView() {
 		super.loadView()
+		print("ViewController.loadView Started")
+		
 		
 		print("ViewController.loadView Finished")
 	}
@@ -21,7 +23,8 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		
+		print("ViewController.viewDidLoad Started")
+
 		wk.loadWebView()
 		// webViewが入るframeをviewのframeに指定
 		wk.webView.frame = view.frame
@@ -30,13 +33,14 @@ class ViewController: UIViewController {
 		// WKWebViewを最背面に移動
 		view.sendSubview(toBack: wk.webView)
 		
-		wk.loadWebContent()
+		wk.loadWebContents()
 		
 		print("ViewController.viewDidLoad Finished")
 	}
 
 	override func viewDidDisappear(_ animated: Bool) {
-		
+		print("ViewController.viewDidDisappear Started")
+
 		
 		print("ViewController.viewDidDisappear Finished")
 	}
@@ -46,7 +50,6 @@ class ViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 	
-
-
+	
 }
 

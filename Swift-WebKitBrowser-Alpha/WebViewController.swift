@@ -11,14 +11,38 @@ import WebKit
 class WebViewController: WKWebView, WKUIDelegate, WKNavigationDelegate {
 	var webView: WKWebView!
 	
+	// Web遷移〜ページ読み込み〜ページ読み込み完了の一連のタイミングごとに呼ばれる関数。WKNavigationDelegateのdelegateを通しておくことを忘れないこと
+	func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {	}	//遷移開始時
+	func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {	}	//サーバーリダイレクトされた時
+	func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {	}	//遷移中にエラーが発生した時
+	func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {	}	//ページ読み込みが開始された時
+	func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {	}	//ページ読み込み時にエラーが発生した時
+	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {	//Web//ページ読み込みが完了した時。
+		print("WebViewController.webView didFinished Started")
+	
+		_ = webView.title
+	
+		print("WebViewController.webView didFinished Finished")
+	}
+//	func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {	}	//認証が必要な時(エラー発生のためコメントアウト)
+	func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {	}	//ページ読み込みが中止された時
+	
+	// webViewの生成
 	func loadWebView() {
+		print("WebViewController.loadWebView Started")
+		
 		let webConfiguration = WKWebViewConfiguration()
 		webView = WKWebView(frame: .zero, configuration: webConfiguration)
 		webView.navigationDelegate = self
 		webView.uiDelegate = self
+		
+		print("WebViewController.loadWebView Finished")
 	}
 	
-	func loadWebContent() {
+	// URLの登録から読み込み開始とレイアウトおよび操作の設定
+	func loadWebContents() {
+		print("WebViewController.loadWebContents Started")
+		
 		let url = URL(string: "https://www.apple.com")
 		let request = URLRequest(url: url!)
 		webView.load(request)
@@ -27,24 +51,14 @@ class WebViewController: WKWebView, WKUIDelegate, WKNavigationDelegate {
 		webView.translatesAutoresizingMaskIntoConstraints = false
 		// ジェスチャーを許可
 		webView.allowsBackForwardNavigationGestures = true
-	}
-	
-/*
-	func webView(_:didCommitNavigation:)	//遷移開始時
-	func webView(_:didFailNavigation:withError:)	//遷移中にエラーが発生した時
-	func webView(_:didFailProvisionalNavigation:withError:) //ページ読み込み時にエラーが発生した時
-	func webView(_:didFinishNavigation:) //ページ読み込みが完了した時
-	func webView(_:didReceiveAuthenticationChallenge:completionHandler:) //認証が必要な時
-	func webView(_:didReceiveServerRedirectForProvisionalNavigation:) //リダイレクトされた時
-	func webView(_:didStartProvisionalNavigation:) //ページ読み込みが開始された時
-*/
-	
-	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {	//Webのロード完了後に実行されるメソッド。WKNavigationDelegateのdelegateを通しておくことを忘れないこと
-		_ = webView.title
+		
+		print("WebViewController.loadWebContents Finished")
 	}
 	
 	// target="_blank"なリンクが押されたときに無反応になるので対処
 	func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+		print("WebViewController.webView createWebViewWith configuration for navigationAction windowFeatures Started")
+
 		guard let url = navigationAction.request.url else {
 			return nil
 		}
@@ -53,7 +67,10 @@ class WebViewController: WKWebView, WKUIDelegate, WKNavigationDelegate {
 			webView.load(URLRequest(url: url))
 			return nil
 		}
+		
+		print("WebViewController.webView createWebViewWith configuration for navigationAction windowFeatures Finished")
 		return nil
+		
 	}
 	
 }
