@@ -14,7 +14,6 @@ class ViewController: UIViewController {
 	
 	override func loadView() {
 		super.loadView()
-		print("ViewController.loadView Started")
 		
 		
 		print("ViewController.loadView Finished")
@@ -23,7 +22,6 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		print("ViewController.viewDidLoad Started")
 
 		wk.loadWebView()
 		// webViewが入るframeをviewのframeに指定
@@ -39,7 +37,6 @@ class ViewController: UIViewController {
 	}
 
 	override func viewDidDisappear(_ animated: Bool) {
-		print("ViewController.viewDidDisappear Started")
 
 		
 		print("ViewController.viewDidDisappear Finished")

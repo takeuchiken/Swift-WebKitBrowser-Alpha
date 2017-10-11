@@ -18,7 +18,6 @@ class WebViewController: WKWebView, WKUIDelegate, WKNavigationDelegate {
 	func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {	}	//ページ読み込みが開始された時
 	func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {	}	//ページ読み込み時にエラーが発生した時
 	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {	//Web//ページ読み込みが完了した時。
-		print("WebViewController.webView didFinished Started")
 	
 		_ = webView.title
 	
@@ -29,7 +28,6 @@ class WebViewController: WKWebView, WKUIDelegate, WKNavigationDelegate {
 	
 	// webViewの生成
 	func loadWebView() {
-		print("WebViewController.loadWebView Started")
 		
 		let webConfiguration = WKWebViewConfiguration()
 		webView = WKWebView(frame: .zero, configuration: webConfiguration)
@@ -41,7 +39,6 @@ class WebViewController: WKWebView, WKUIDelegate, WKNavigationDelegate {
 	
 	// URLの登録から読み込み開始とレイアウトおよび操作の設定
 	func loadWebContents() {
-		print("WebViewController.loadWebContents Started")
 		
 		let url = URL(string: "https://www.apple.com")
 		let request = URLRequest(url: url!)
@@ -57,7 +54,6 @@ class WebViewController: WKWebView, WKUIDelegate, WKNavigationDelegate {
 	
 	// target="_blank"なリンクが押されたときに無反応になるので対処
 	func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-		print("WebViewController.webView createWebViewWith configuration for navigationAction windowFeatures Started")
 
 		guard let url = navigationAction.request.url else {
 			return nil
