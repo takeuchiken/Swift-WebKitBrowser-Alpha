@@ -11,6 +11,11 @@ import UIKit
 class ViewController: UIViewController {
 	
 	var wk = WebViewController()
+	@IBOutlet weak var toolbar: UIToolbar!
+	@IBAction func backButton(_ sender: Any) {
+	}
+	@IBAction func forwardButton(_ sender: Any) {
+	}
 	
 	override func loadView() {
 		super.loadView()
@@ -48,5 +53,22 @@ class ViewController: UIViewController {
 	}
 	
 	
+	func toolbarLooks() {
+		self.toolbar.layer.cornerRadius = 5	// 角丸のサイズ
+		self.toolbar.layer.borderWidth = 2.0	// 枠線の幅
+		self.toolbar.backgroundColor = UIColor.lightGray	// 背景色
+		self.toolbar.layer.borderColor = UIColor.red.cgColor	// 枠線の色
+
+	}
+	
+	
 }
 
+// 「Storyboard」でボタン枠の色を変える方法
+// StoryboardでKeyPathにlayer.borderUIColorを入力し、Colorで選択する。
+// <https://news.d-lighted.jp/blog-staff/storyboard>
+extension CALayer {
+	func setBorderUIColor(_ color: UIColor) {
+		self.borderColor = color.cgColor
+	}
+}
