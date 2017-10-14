@@ -13,18 +13,19 @@ class WebViewController: WKWebView, WKUIDelegate, WKNavigationDelegate {
 	
 	// webViewの生成
 	func loadWebView() {
-		
+		print("WebViewController.loadWebView")
+
 		let webConfiguration = WKWebViewConfiguration()
 		webView = WKWebView(frame: .zero, configuration: webConfiguration)
 		webView.navigationDelegate = self
 		webView.uiDelegate = self
 		
-		print("WebViewController.loadWebView Finished")
 	}
 	
 	// URLの登録から読み込み開始とレイアウトおよび操作の設定
 	func loadWebContents() {
-		
+		print("WebViewController.loadWebContents")
+
 		let url = URL(string: "https://www.apple.com")
 		//let url = URL(string: "https://www.sketchappsources.com/rss.xml")
 		let request = URLRequest(url: url!)
@@ -35,7 +36,6 @@ class WebViewController: WKWebView, WKUIDelegate, WKNavigationDelegate {
 		// ジェスチャーを許可
 		webView.allowsBackForwardNavigationGestures = true
 		
-		print("WebViewController.loadWebContents Finished")
 	}
 	
 	// Web遷移〜ページ読み込み〜ページ読み込み完了の一連のタイミングごとに呼ばれる関数。WKNavigationDelegateのdelegateを通しておくことを忘れないこと
@@ -45,16 +45,17 @@ class WebViewController: WKWebView, WKUIDelegate, WKNavigationDelegate {
 	func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {	}	//ページ読み込みが開始された時
 	func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {	}	//ページ読み込み時にエラーが発生した時
 	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {	//Web//ページ読み込みが完了した時。
-	
+		print("WebViewController.webView didFinished")
+
 		_ = webView.title
 	
-		print("WebViewController.webView didFinished Finished")
 	}
 //	func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {	}	//認証が必要な時(エラー発生のためコメントアウト)
 	func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {	}	//ページ読み込みが中止された時
 	
 		// target="_blank"なリンクが押されたときに無反応になるので対処
 	func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+		print("WebViewController.webView createWebViewWith configuration for navigationAction windowFeatures")
 
 		guard let url = navigationAction.request.url else {
 			return nil
@@ -65,7 +66,6 @@ class WebViewController: WKWebView, WKUIDelegate, WKNavigationDelegate {
 			return nil
 		}
 		
-		print("WebViewController.webView createWebViewWith configuration for navigationAction windowFeatures Finished")
 		return nil
 		
 	}

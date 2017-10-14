@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		434E1E2C1F919DB2003FB4D3 /* ToolBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434E1E2B1F919DB2003FB4D3 /* ToolBar.storyboard */; };
+		434E1E2E1F919E2C003FB4D3 /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434E1E2D1F919E2C003FB4D3 /* ToolBarView.swift */; };
 		43CD12941F8D325500CD05D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CD12931F8D325500CD05D5 /* AppDelegate.swift */; };
 		43CD12961F8D325500CD05D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CD12951F8D325500CD05D5 /* ViewController.swift */; };
 		43CD12991F8D325500CD05D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43CD12971F8D325500CD05D5 /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		434E1E2B1F919DB2003FB4D3 /* ToolBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ToolBar.storyboard; sourceTree = "<group>"; };
+		434E1E2D1F919E2C003FB4D3 /* ToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
 		43CD12901F8D325500CD05D5 /* Swift-WebKitBrowser-Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-WebKitBrowser-Alpha.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CD12931F8D325500CD05D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43CD12951F8D325500CD05D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +80,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		434E1E261F919726003FB4D3 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				43CD12931F8D325500CD05D5 /* AppDelegate.swift */,
+				43CD12951F8D325500CD05D5 /* ViewController.swift */,
+				43CD129C1F8D325500CD05D5 /* LaunchScreen.storyboard */,
+				43CD12971F8D325500CD05D5 /* Main.storyboard */,
+				43CD129A1F8D325500CD05D5 /* Assets.xcassets */,
+				434E1E281F919879003FB4D3 /* NativeViews */,
+				434E1E271F919842003FB4D3 /* WebViews */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		434E1E271F919842003FB4D3 /* WebViews */ = {
+			isa = PBXGroup;
+			children = (
+				43CD12C11F8D364500CD05D5 /* WebViewController.swift */,
+				434E1E2A1F919D1E003FB4D3 /* WebKitSubSystem */,
+			);
+			path = WebViews;
+			sourceTree = "<group>";
+		};
+		434E1E281F919879003FB4D3 /* NativeViews */ = {
+			isa = PBXGroup;
+			children = (
+				434E1E291F919C7B003FB4D3 /* ToolBar */,
+			);
+			path = NativeViews;
+			sourceTree = "<group>";
+		};
+		434E1E291F919C7B003FB4D3 /* ToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				434E1E2B1F919DB2003FB4D3 /* ToolBar.storyboard */,
+				434E1E2D1F919E2C003FB4D3 /* ToolBarView.swift */,
+			);
+			path = ToolBar;
+			sourceTree = "<group>";
+		};
+		434E1E2A1F919D1E003FB4D3 /* WebKitSubSystem */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WebKitSubSystem;
+			sourceTree = "<group>";
+		};
 		43CD12871F8D325500CD05D5 = {
 			isa = PBXGroup;
 			children = (
@@ -99,13 +150,8 @@
 		43CD12921F8D325500CD05D5 /* Swift-WebKitBrowser-Alpha */ = {
 			isa = PBXGroup;
 			children = (
-				43CD12931F8D325500CD05D5 /* AppDelegate.swift */,
-				43CD12951F8D325500CD05D5 /* ViewController.swift */,
-				43CD12971F8D325500CD05D5 /* Main.storyboard */,
-				43CD129A1F8D325500CD05D5 /* Assets.xcassets */,
-				43CD129C1F8D325500CD05D5 /* LaunchScreen.storyboard */,
+				434E1E261F919726003FB4D3 /* Presentation */,
 				43CD129F1F8D325500CD05D5 /* Info.plist */,
-				43CD12C11F8D364500CD05D5 /* WebViewController.swift */,
 			);
 			path = "Swift-WebKitBrowser-Alpha";
 			sourceTree = "<group>";
@@ -235,6 +281,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				434E1E2C1F919DB2003FB4D3 /* ToolBar.storyboard in Resources */,
 				43CD129E1F8D325500CD05D5 /* LaunchScreen.storyboard in Resources */,
 				43CD129B1F8D325500CD05D5 /* Assets.xcassets in Resources */,
 				43CD12991F8D325500CD05D5 /* Main.storyboard in Resources */,
@@ -264,6 +311,7 @@
 			files = (
 				43CD12961F8D325500CD05D5 /* ViewController.swift in Sources */,
 				43CD12C21F8D364500CD05D5 /* WebViewController.swift in Sources */,
+				434E1E2E1F919E2C003FB4D3 /* ToolBarView.swift in Sources */,
 				43CD12941F8D325500CD05D5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
